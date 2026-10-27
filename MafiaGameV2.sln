@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MafiaGameV2", "MafiaGameV2\MafiaGameV2.csproj", "{F72C4C48-1A1C-400C-8028-E2379B17408F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MafiaGameServer", "MafiaGameServer\MafiaGameServer.csproj", "{0CBE0158-D3C9-4C9C-BFAF-123E100B1BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MafiaGameClient", "MafiaGameClient\MafiaGameClient.csproj", "{0DB935E5-10E3-4473-AC9F-7041F2183E19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F72C4C48-1A1C-400C-8028-E2379B17408F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72C4C48-1A1C-400C-8028-E2379B17408F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72C4C48-1A1C-400C-8028-E2379B17408F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72C4C48-1A1C-400C-8028-E2379B17408F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CBE0158-D3C9-4C9C-BFAF-123E100B1BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBE0158-D3C9-4C9C-BFAF-123E100B1BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBE0158-D3C9-4C9C-BFAF-123E100B1BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBE0158-D3C9-4C9C-BFAF-123E100B1BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB935E5-10E3-4473-AC9F-7041F2183E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB935E5-10E3-4473-AC9F-7041F2183E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB935E5-10E3-4473-AC9F-7041F2183E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB935E5-10E3-4473-AC9F-7041F2183E19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
