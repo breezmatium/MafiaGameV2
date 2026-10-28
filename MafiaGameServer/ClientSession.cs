@@ -5,11 +5,13 @@ namespace MafiaGameServer;
 
 public class ClientSession(TcpClient tcp)
 {
+    private const int MaxLineLength = 64 * 1024;
+    
     private readonly NetworkStream _stream = tcp.GetStream();
     private readonly List<byte> _pending = new();
     private readonly SemaphoreSlim _writeLock = new(1, 1);
 
-    public async Task HandleAsync()
+    public async Task HandleAsync(Func<string, Task> onMessage)
     {
         var buffer = new byte[1024];
         try
@@ -23,11 +25,13 @@ public class ClientSession(TcpClient tcp)
 
                 while (TryReadText(out string text))
                 {
-                    Console.WriteLine($"Got: {text}");
-                    
-                    await SendAsync(text);
+                    await onMessage(text);
+                }
 
-                    Console.WriteLine($"Sent: {text}");
+                if (_pending.Count > MaxLineLength)
+                {
+                    Console.WriteLine("Line too long. Dropping player");
+                    break;
                 }
             }
         }

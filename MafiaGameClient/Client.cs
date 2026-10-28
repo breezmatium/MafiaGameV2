@@ -6,7 +6,7 @@ namespace MafiaGameClient;
 public class Client
 {
     private readonly TcpClient _client = new();
-    private NetworkStream _stream;
+    private NetworkStream _stream = null!;
     private readonly List<byte> _pending = new();
 
     public async Task Connect()
@@ -37,11 +37,7 @@ public class Client
             }
             
             int read = await _stream.ReadAsync(buffer);
-            if (read == 0)
-            {
-                Console.WriteLine("Server closed");
-                return string.Empty;
-            }
+            if (read == 0) return string.Empty;
             
             _pending.AddRange(buffer[..read]);
         }
@@ -49,7 +45,7 @@ public class Client
     
     public async Task Disconnect()
     {
-        await SendAsync("DISCONNECT");
         await _stream.DisposeAsync();
+        _client.Close();
     }
 }

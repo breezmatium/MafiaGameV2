@@ -1,7 +1,4 @@
-﻿using System.Net.Sockets;
-using System.Text;
-
-namespace MafiaGameClient;
+﻿namespace MafiaGameClient;
 
 class Program
 {
@@ -9,16 +6,32 @@ class Program
     {
         var client = new Client();
         await client.Connect();
+
+        var receiver = Task.Run(async () =>
+        {
+            try
+            {
+                while (true)
+                {
+                    string message = await client.ReadAsync();
+                    if (message.Length == 0) break;
+                    Console.WriteLine(message);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Receive stopped: " + e.Message);
+            }
+        });
         
         while (true)
         {
             string? line = Console.ReadLine();
             if (line == null) break;
-
             await client.SendAsync(line);
-
-            string response = await client.ReadAsync();
-            Console.WriteLine($"Server: {response}");
         }
+
+        await client.Disconnect();
+        await receiver;
     }
 }
